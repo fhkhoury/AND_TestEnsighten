@@ -1,0 +1,61 @@
+apply plugin: 'com.android.application'
+apply plugin: 'ensighten'
+
+buildscript {
+    repositories {
+        maven {
+            url 'https://ensighten-mobile.bintray.com/maven/'
+        }
+        //mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.ensighten.plugin.android:ensighten:2.0.1"
+        //classpath "com.ensighten.android.ensighten-core:2.2.5"
+
+    }
+}
+
+repositories {
+    maven {
+        url 'https://ensighten-mobile.bintray.com/maven/'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'ensighten'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "fka.and_testensighten"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile ('com.ensighten.plugin.android:ensighten:2.0.1'){
+        transitive = true;
+    }
+    /*compile ('com.ensighten.android.ensighten-core:2.2.5'){
+        transitive = true;
+    }*/
+
+
+}
